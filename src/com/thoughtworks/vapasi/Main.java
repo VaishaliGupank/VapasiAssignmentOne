@@ -35,7 +35,7 @@ public class Main {
         OrderRepository _orderRepository = new OrderRepository();
         _orderRepository._shoppingCart = _shoppingCart;
         _orderRepository.CreateOrder();
-        _orderRepository.PrintOrder();
+        _orderRepository.PrintOrder() ;
 
 
 
