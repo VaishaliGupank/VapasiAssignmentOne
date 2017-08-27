@@ -5,6 +5,6 @@ public class ShoppingCartItem {
     public int shoppingCartItemId ;
     public String fruit ;
 
-    public float quantity ;
+    public double quantity ;
     public String shoppingCartId ;
 }

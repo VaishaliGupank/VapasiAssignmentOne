@@ -4,21 +4,21 @@ import java.util.HashMap;
 
 public class MockFruitRepository implements IFruitRepository {
 
-    static HashMap<String,Fruit> priceTableForFruits;
+    static HashMap<String,OrderItem> priceTableForFruits;
     @Override
     public void populatePriceTableFruits() {
-        priceTableForFruits = new HashMap<String,Fruit>();
-        priceTableForFruits.put("Apple", new Fruit("Apple",100));
-        priceTableForFruits.put("Orange", new Fruit("Orange",80));
-        priceTableForFruits.put("Banana", new Fruit("Banana",30));
-        priceTableForFruits.put("Kiwi", new Fruit("Kiwi",120));
+        priceTableForFruits = new HashMap<String,OrderItem>();
+        priceTableForFruits.put("Apple", new OrderItem("Apple",100.0));
+        priceTableForFruits.put("Orange", new OrderItem("Orange",80.0));
+        priceTableForFruits.put("Banana", new OrderItem("Banana",30.0));
+        priceTableForFruits.put("Kiwi", new OrderItem("Kiwi",120.0));
 
     }
 
     @Override
-    public void addFruits(String fruitName, float pricePerKg) {
+    public void addFruits(String fruitName, Double pricePerKg) {
 
-        priceTableForFruits.put(fruitName, new Fruit(fruitName,pricePerKg));
+        priceTableForFruits.put(fruitName, new OrderItem(fruitName, pricePerKg));
 
     }
 
@@ -31,13 +31,13 @@ public class MockFruitRepository implements IFruitRepository {
     public void showAllFruits() {
         System.out.println("Fruit Name" + " " + "Per kg rate");
         for (String key : priceTableForFruits.keySet()) {
-            System.out.println(key + " " + priceTableForFruits.get(key).pricePerKg);
+            System.out.println(key + " " + priceTableForFruits.get(key).getPrice());
         }
     }
 
-    public static Float getFruitPrice(String fruitName)
+    public static Double getFruitPrice(String fruitName)
     {
-        float _fruit  = (float) priceTableForFruits.get(fruitName).pricePerKg;
+        Double _fruit  = (Double) priceTableForFruits.get(fruitName).getPrice();
         return _fruit;
     }
 }

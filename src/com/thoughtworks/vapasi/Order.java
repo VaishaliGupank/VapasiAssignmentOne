@@ -7,5 +7,5 @@ public class Order {
     public int orderId;
     public List<OrderDetail> orderLines;
     public Date orderPlaced;
-    public float totalAmount;
+    public double totalAmount;
 }
