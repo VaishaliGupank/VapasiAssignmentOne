@@ -1,12 +1,11 @@
 package com.thoughtworks.vapasi;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        MockFruitRepository _mockFruitRepository = new MockFruitRepository();
+         IOrderItemRepository _mockFruitRepository  = new MockFruitRepository();
         _mockFruitRepository.populatePriceTableFruits();
         _mockFruitRepository.showAllFruits();
 	    /* Take input from the user */
@@ -32,10 +31,16 @@ public class Main {
         _shoppingCartItem4.quantity = 0.75f;
         _shoppingCart.shoppingCartItems.add((_shoppingCartItem4));
 
-        OrderRepository _orderRepository = new OrderRepository();
-        _orderRepository._shoppingCart = _shoppingCart;
-        _orderRepository.CreateOrder();
-        _orderRepository.PrintOrder() ;
+        Receipt _orderRepository = new Receipt(_shoppingCart,_mockFruitRepository);
+        Order printReceipt = _orderRepository.CreateOrder();
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Fruit Name" + "  " + "Quantity" + "  " + "Price");
+        for (int i = 0; i < printReceipt.orderLines.size(); i++) {
+            System.out.println(printReceipt.orderLines.get(i).fruit + " " + printReceipt.orderLines.get(i).quantity + " " + printReceipt.orderLines.get(i).totalPrice);
+
+        }
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Total Amount   " + printReceipt.totalAmount);
 
 
 

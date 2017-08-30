@@ -2,7 +2,7 @@ package com.thoughtworks.vapasi;
 
 import java.util.HashMap;
 
-public class MockFruitRepository implements IFruitRepository {
+public class MockFruitRepository implements IOrderItemRepository {
 
     static HashMap<String,OrderItem> priceTableForFruits;
     @Override
@@ -35,9 +35,9 @@ public class MockFruitRepository implements IFruitRepository {
         }
     }
 
-    public static Double getFruitPrice(String fruitName)
+    public Double getFruitPrice(String fruitName)
     {
-        Double _fruit  = (Double) priceTableForFruits.get(fruitName).getPrice();
-        return _fruit;
+        Double _fruitPrice  = (Double) priceTableForFruits.get(fruitName).getPrice();
+        return _fruitPrice;
     }
 }
